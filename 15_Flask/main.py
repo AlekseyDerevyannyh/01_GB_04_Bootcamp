@@ -6,10 +6,10 @@ system("cls")
 
 app = Flask(__name__)	# Создали веб приложение
 
-@app.route('/<name>')	# Создание главной страницы
-def main(name):
-	title = 'Igor'
-	return render_template('base.html', name = name, title = 'BootCamp')
+@app.route('/')	# Создание главной страницы
+def main():
+	user_name = ['Aleksey', 'Alla', 'Almir', 'Diana', 'Ilali']
+	return render_template('base.html', user_name = user_name, title = 'BootCamp')
 
 if __name__ == '__main__':
 	app.run()
