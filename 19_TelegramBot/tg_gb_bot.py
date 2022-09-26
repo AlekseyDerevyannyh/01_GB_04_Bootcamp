@@ -21,7 +21,7 @@ def load():
 		films = json.load(fh)
 	print("Фильмотека была успешно загружена")
 
-API_TOKEN = '5762531742:AAH5Ujt0YuiosA0pc-8KSWGXsn-albbw390'
+API_TOKEN = ''
 bot = telebot.TeleBot(API_TOKEN)
 
 @bot.message_handler(commands = ['start'])
