@@ -6,13 +6,13 @@ system('cls')
 films =[]
 
 def save():
-	with open('18_TelegramBot/films.json', 'w', encoding = 'UTF-8') as fh:
+	with open('18_SimpleBot/films.json', 'w', encoding = 'UTF-8') as fh:
 		fh.write(json.dumps(films, ensure_ascii = False))
 	print('Наша фильмотека была успешно сохранена в файле films.json')
 
 def load():
 	global films
-	with open('18_TelegramBot/films.json', 'r', encoding = 'UTF-8') as fh:
+	with open('18_SimpleBot/films.json', 'r', encoding = 'UTF-8') as fh:
 		films = json.load(fh)
 	print("Фильмотека была успешно загружена")
 
