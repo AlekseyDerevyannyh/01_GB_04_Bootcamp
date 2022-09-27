@@ -5,10 +5,13 @@ import telebot
 from random import *
 import json
 from os import system
+import requests
 
 system('cls')
 
 films =[]
+API_URL = 'https://7012.deeppavlov.ai/model'
+
 
 def save():
 	with open('19_TelegramBot/films.json', 'w', encoding = 'UTF-8') as fh:
@@ -41,5 +44,18 @@ def start_message(message):
 def show_all(message):
 	bot.send_message(message.chat.id, 'Вот список фильмов')
 	bot.send_message(message.chat.id, ', '.join(films))
+
+@bot.message_handler(commands = ['wiki'])
+def wiki(message):
+	quest = message.text.split()[1:]
+	qq = ' '.join(quest)
+	data = {'question_raw': [qq]}
+	try:
+		res = requests.post(API_URL, json = data, verify = False).json()
+		bot.send_message(message.chat.id, res)
+	except:
+		bot.send_message(message.chat.id, 'Что-то я ничего не нашёл :-(')
+	# bot.send_message(message.chat.id, 'Вот список фильмов')
+	# bot.send_message(message.chat.id, ', '.join(films))
 
 bot.polling()
